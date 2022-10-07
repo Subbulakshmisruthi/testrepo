@@ -1,0 +1,48 @@
+{% extends 'home/index.html'%}
+{% block body %}
+
+<div class="form-body" style="width: 500px; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 2px solid #fff ; border-radius: 10px; padding: 40px;">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h2>Registration</h2>
+                    <br>
+                    <form class="requires-validation" novalidate method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-12" style="padding: 0 0 20px 0;">
+                           <input class="form-control" type="text" name="name" placeholder="User Name" required style="color: #fff; background-color: #152733;" autocomplete="off">
+                        </div>
+
+                        <div class="col-md-12" style="padding: 0 0 20px 0;">
+                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required style="color: #fff; background-color: #152733;" autocomplete="off">
+                        </div>
+
+                        <div class="col-md-12" style="padding: 0 0 20px 0;">
+                            <input class="form-control" type="text" id="pd" name="password" required style="display: none;">
+                        </div>
+
+                       <div class="col-md-12" style="padding: 0 0 20px 0;">
+                          <a href="#" class="form-control" id="passwd" name="password"  required style="color: #fff; background-color: #152733; text-align: center; " onclick="showpasswd()"> Choose password </a>
+                          
+                       </div>
+<div class="row" id="images" style="display: none; padding-left: 20px;">
+{% for image in images %}
+<a href="#"><img src="{{image.image.url}}" style="width: 80px; height: 80px; margin: 10px;" class="images"></a>
+{% endfor %}
+</div>
+                        <div class="form-button mt-3">
+                            <button id="submit" type="submit" class="btn btn-primary" >Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showpasswd(){
+        document.querySelector('#images').style.display='block';
+    }
+</script>
+{% endblock %}
